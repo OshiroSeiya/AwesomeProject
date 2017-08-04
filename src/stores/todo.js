@@ -26,4 +26,9 @@ export default class TodoStore {
   @action toggleComplete(id) {
     this.list = this.list.map(o => o.id === id ? { ...o, isComplete: !o.isComplete } : o);
   }
+
+  // 指定したidのtodoを削除する
+  @action del(id) {
+    this.list = this.list.filter(o => o.id !== id);
+  }
 }

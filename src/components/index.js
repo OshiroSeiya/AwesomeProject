@@ -25,7 +25,7 @@ export default class Todo extends Component {
             `[${row.message}]を削除しますか？`,
             [
               { text: '削除しない', style: 'cancel' },
-              { text: '削除', onPress: () => console.log('todo削除') },
+              { text: '削除', onPress: () => todo.del(row.id) },
             ],
           );
         }}
