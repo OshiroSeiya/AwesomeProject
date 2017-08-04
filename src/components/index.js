@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CheckBox, FormInput } from 'react-native-elements';
+import { inject, observer } from 'mobx-react/native';
 import {
   Alert,
   Button,
@@ -7,15 +8,11 @@ import {
   ScrollView,
 } from 'react-native';
 
-// TODO: モック用のデータ(後にMobXに沈む)
-const todoList = [
-  { id: 1, message: 'todo!', isComplete: false, },
-  { id: 2, message: 'complete todo!', isComplete: true, },
-  { id: 3, message: 'complete todo!', isComplete: true, },
-];
-
+@inject('todo')
+@observer
 export default class Todo extends Component {
   render() {
+    const { todo } = this.props;
     // チェックボックス用のjsxを吐き出す
     const TodoCheckBox = (row) => (
       <CheckBox
@@ -52,7 +49,7 @@ export default class Todo extends Component {
           </View>
         </View>
         <ScrollView style={{ flex: 1 }}>
-          {todoList.map(TodoCheckBox)}
+          {todo.list.map(TodoCheckBox)}
         </ScrollView>
       </View>
     );
