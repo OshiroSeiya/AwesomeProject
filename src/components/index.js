@@ -39,6 +39,8 @@ export default class Todo extends Component {
           <View style={{ flex: 5 }}>
             <FormInput
               autoCapitalize="none"
+              value={todo.inputText}
+              onChangeText={(message) => todo.onChangeText(message)}
             />
           </View>
           <View style={{ flex: 1 }}>

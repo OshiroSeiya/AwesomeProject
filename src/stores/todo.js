@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 export default class TodoStore {
   // TODO: とりあえずデータを入れておく
@@ -7,4 +7,10 @@ export default class TodoStore {
     { id: 2, message: 'complete todo!', isComplete: true, },
     { id: 3, message: 'complete todo!', isComplete: true, },
   ];
+  @observable inputText = '';
+
+  // テキストフォームに変更があればの文字列を保持する
+  @action onChangeText(message) {
+    this.inputText = message;
+  }
 }
