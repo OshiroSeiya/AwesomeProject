@@ -21,4 +21,9 @@ export default class TodoStore {
     });
     this.inputText = '';
   }
+
+  // 指定したidのコンプリートフラグを反転する
+  @action toggleComplete(id) {
+    this.list = this.list.map(o => o.id === id ? { ...o, isComplete: !o.isComplete } : o);
+  }
 }

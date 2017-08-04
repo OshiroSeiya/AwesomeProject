@@ -18,7 +18,7 @@ export default class Todo extends Component {
       <CheckBox
         key={row.id}
         title={row.message}
-        onPress={() => console.log('todoトグル')}
+        onPress={() => todo.toggleComplete(row.id)}
         onLongPress={() => {
           Alert.alert(
             '確認',
