@@ -41,11 +41,12 @@ export default class Todo extends Component {
               autoCapitalize="none"
               value={todo.inputText}
               onChangeText={(message) => todo.onChangeText(message)}
+              onSubmitEditing={() => todo.add()}
             />
           </View>
           <View style={{ flex: 1 }}>
             <Button
-              onPress={() => console.log('add')}
+              onPress={() => todo.add()}
               title="ADD"
             />
           </View>

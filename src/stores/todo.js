@@ -1,16 +1,24 @@
 import { observable, action } from 'mobx';
 
 export default class TodoStore {
-  // TODO: とりあえずデータを入れておく
-  @observable list = [
-    { id: 1, message: 'todo!', isComplete: false, },
-    { id: 2, message: 'complete todo!', isComplete: true, },
-    { id: 3, message: 'complete todo!', isComplete: true, },
-  ];
+  @observable list = [];
   @observable inputText = '';
 
   // テキストフォームに変更があればの文字列を保持する
   @action onChangeText(message) {
     this.inputText = message;
+  }
+
+  // todo listにデータを追加
+  @action add() {
+    // 空文字の場合は登録しない
+    if (this.inputText === '') return;
+
+    this.list.push({
+      id: Math.random().toString(36).slice(-8),  // 雑にランダム文字列を生成
+      message: this.inputText,
+      isComplete: false,
+    });
+    this.inputText = '';
   }
 }
